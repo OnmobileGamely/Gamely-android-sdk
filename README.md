@@ -97,8 +97,8 @@ You can do SDK initialization in the application/activity class
  val gamelySDKClient = GamelySdkClient.Builder(this)
             .setUserId("token value") //Mandatory
             .setApiKey("api key value")//Mandatory
-            .setLogEnabled(false) //false by default | Optional
             .setLocale(GamelyLocale.ENGLISH)//Optional
+            .setUpEnvironment(Environment.STAGING)//Optional, default: Environment.PRODUCTION
             .setInitListener(iSdkInitListener)//Optional
             .build()
 
@@ -115,7 +115,7 @@ You can do SDK initialization in the application/activity class
 Use the following lines to get a reward
 
 ```kotlin
- gamelySDKClient?.getReward(RequestOption.NEXT_PLAY_TIME, null, iResponseListener, iEventListener) // For NextPlayTime
+ gamelySDKClient?.getReward(RequestOption.REWARD_NAME_INFO, "rule name value", iResponseListener, iEventListener) // For reward info by name
  gamelySDKClient?.getReward(RequestOption.REWARD_NAME, "rule name value", iResponseListener, iEventListener) // For reward by name
 
 //callback listener for response
@@ -126,16 +126,21 @@ val iResponseListener = object : IResponseListener {
         activity: AppCompatActivity?,
         tokenExpiredListener: ITokenExpiredListener?
     ) {
-        //Incase of Win/Loose, response will have result bundle and activity
-        //Incase of NextPlayTime, response will have result bundle
+           //Incase of Win/Loose, response will have result bundle and activity
+            //Incase of RewardInfo, response will have result bundle
 
-        //resultBundle?.bundle?.getString("Text") // Result text
-        //resultBundle?.bundle?.getLong("NextPlayTimeStamp") // Next Rule Start timestamp in millisecond
-        //resultBundle?.bundle?.getLong("NextPlayRemainingTimeStamp")// Next Rule Remaining timestamp in millisecond
-        //resultBundle?.bundle?.getString("NextPlayRuleName") // Next Rule Name
-        
-        //val bottomSheetDialog = BottomSheetDialog(activity) // use this activity to open bottomsheet
-        //if (activity != null) (activity as GamelySdkHomeActivity).triviaCompleted()// use this to close sdk
+            //resultBundle?.bundle?.getString("Text") // Result text
+            //resultBundle?.bundle?.getLong("NextPlayTimeStamp") // Next Rule Start timestamp in millisecond
+            //resultBundle?.bundle?.getLong("NextPlayRemainingTimeStamp")// Next Rule Remaining timestamp in millisecond
+            //resultBundle?.bundle?.getString("NextPlayRuleName") // Next Rule Name
+
+            //resultBundle?.bundle?.getInt("SpinsLeftCount")// Number of Spins left in case of SpinWheel
+            //resultBundle?.bundle?.getInt("PointsWon")//Points won
+            //resultBundle?.bundle?.getInt("CoinsWon")//Coins won
+            //resultBundle?.bundle?.getStringArray("VouchersWon")// voucher codes won
+
+            //val bottomSheetDialog = BottomSheetDialog(activity) // use this activity to open bottomsheet
+            //if (activity != null) (activity as GamelySdkHomeActivity).triviaCompleted()// use this to close sdk
 
 
         when (resultStatus) {
@@ -147,6 +152,9 @@ val iResponseListener = object : IResponseListener {
             ResultStatus.NOTEMPLATE -> {}
             ResultStatus.FAILURE -> {}
             ResultStatus.WON -> {
+                //resultBundle?.bundle?.getInt("PointsWon")
+                //resultBundle?.bundle?.getInt("CoinsWon")
+                //resultBundle?.bundle?.getStringArray("VouchersWon")
                 //resultBundle?.bundle?.getString("Text")
                 //resultBundle?.bundle?.getLong("NextPlayTimeStamp")
                 //resultBundle?.bundle?.getLong("NextPlayRemainingTimeStamp")
@@ -160,7 +168,8 @@ val iResponseListener = object : IResponseListener {
                 //resultBundle?.bundle?.getString("NextPlayRuleName")
                 //if (activity != null) (activity as GamelySdkHomeActivity).triviaCompleted()
             }
-            ResultStatus.NEXT_PLAYTIME -> {
+            ResultStatus.REWARD_INFO -> {
+                //resultBundle?.bundle?.getInt("SpinsLeftCount")
                 //resultBundle?.bundle?.getLong("NextPlayTimeStamp")
                 //resultBundle?.bundle?.getLong("NextPlayRemainingTimeStamp")
                 //resultBundle?.bundle?.getString("NextPlayRuleName")
@@ -213,10 +222,10 @@ enum class ResultStatus {
     NOTEMPLATE,// Error needs to be handled by client app
     WON,
     LOOSE,
-    NEXT_PLAYTIME,//NextPlayTime result
     FAILURE,//Any Failure/NextPlayTime Failure
     TOKEN_EXPIRED,//Token has expired
-    PLAY_COMPLETED;//Reward with LeaderBoard Played & Reward with Scheduling Played(When not won/loose)
+    PLAY_COMPLETED,//Reward with LeaderBoard Played & Reward with Scheduling Played(When not won/loose)
+    REWARD_INFO;//Information related to Reward like NextPlayTime, SpinsLeftCount
 }
 
 enum class GamelyEvent {
@@ -225,8 +234,8 @@ enum class GamelyEvent {
 }
 
 enum class RequestOption {
-    NEXT_PLAY_TIME,
-    REWARD_NAME
+    REWARD_NAME,
+    REWARD_NAME_INFO
 }
 ```
 

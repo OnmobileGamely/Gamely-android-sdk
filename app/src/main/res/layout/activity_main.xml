@@ -4,18 +4,18 @@
     android:layout_height="match_parent">
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/get_next_play_time"
+        android:id="@+id/get_reward_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
-        android:text="Get NextPlayTime" />
+        android:text="Get RewardInfoByName" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/get_reward_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/get_next_play_time"
+        android:layout_below="@id/get_reward_info"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
         android:text="Get RewardByName" />

@@ -3,6 +3,7 @@ package com.onmobile.gamelysampleapp
 import android.app.Application
 import com.onmobile.gamelysdk.sdkutil.GamelySdkClient
 import com.onmobile.gamelysdk.sdkutil.IGamelySdkClient
+import com.onmobile.gamelysdk.sdkutil.enums.Environment
 import com.onmobile.gamelysdk.sdkutil.enums.GamelyLocale
 import com.onmobile.gamelysdk.sdkutil.enums.ResultStatus
 import com.onmobile.gamelysdk.sdkutil.listeners.ISdkInitListener
@@ -15,8 +16,8 @@ class GamelySampleApplication : Application() {
         gamelySDKClient = GamelySdkClient.Builder(this)
             .setUserId(%TOKEN_VALUE%) //Mandatory
             .setApiKey(%API_KEY%)//Mandatory
-            .setLogEnabled(false) //false by default | Optional
             .setLocale(GamelyLocale.ENGLISH)//Optional
+            .setUpEnvironment(Environment.STAGING)
             .setInitListener(iSdkInitListener)//Optional
             .build()
     }

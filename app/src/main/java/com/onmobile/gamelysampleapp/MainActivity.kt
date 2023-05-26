@@ -27,12 +27,17 @@ class MainActivity : AppCompatActivity() {
                 tokenExpiredListener: ITokenExpiredListener?
             ) {
                 //Incase of Win/Loose, response will have result bundle and activity
-                //Incase of NextPlayTime, response will have result bundle
+                //Incase of RewardInfo, response will have result bundle
 
                 //resultBundle?.bundle?.getString("Text") // Result text
                 //resultBundle?.bundle?.getLong("NextPlayTimeStamp") // Next Rule Start timestamp in millisecond
                 //resultBundle?.bundle?.getLong("NextPlayRemainingTimeStamp")// Next Rule Remaining timestamp in millisecond
                 //resultBundle?.bundle?.getString("NextPlayRuleName") // Next Rule Name
+
+                //resultBundle?.bundle?.getInt("SpinsLeftCount")// Number of Spins left in case of SpinWheel
+                //resultBundle?.bundle?.getInt("PointsWon")//Points won
+                //resultBundle?.bundle?.getInt("CoinsWon")//Coins won
+                ///resultBundle?.bundle?.getStringArray("VouchersWon")// voucher codes won
 
                 //val bottomSheetDialog = BottomSheetDialog(activity) // use this activity to open bottomsheet
                 //if (activity != null) (activity as GamelySdkHomeActivity).triviaCompleted()// use this to close sdk
@@ -47,6 +52,9 @@ class MainActivity : AppCompatActivity() {
                     ResultStatus.NOTEMPLATE -> {}
                     ResultStatus.FAILURE -> {}
                     ResultStatus.WON -> {
+                        //resultBundle?.bundle?.getInt("PointsWon")
+                        //resultBundle?.bundle?.getInt("CoinsWon")
+                        //resultBundle?.bundle?.getStringArray("VouchersWon")
                         //resultBundle?.bundle?.getString("Text")
                         //resultBundle?.bundle?.getLong("NextPlayTimeStamp")
                         //resultBundle?.bundle?.getLong("NextPlayRemainingTimeStamp")
@@ -60,7 +68,8 @@ class MainActivity : AppCompatActivity() {
                         //resultBundle?.bundle?.getString("NextPlayRuleName")
                         //if (activity != null) (activity as GamelySdkHomeActivity).triviaCompleted()
                     }
-                    ResultStatus.NEXT_PLAYTIME -> {
+                    ResultStatus.REWARD_INFO -> {
+                        //resultBundle?.bundle?.getInt("SpinsLeftCount")
                         //resultBundle?.bundle?.getLong("NextPlayTimeStamp")
                         //resultBundle?.bundle?.getLong("NextPlayRemainingTimeStamp")
                         //resultBundle?.bundle?.getString("NextPlayRuleName")
@@ -87,10 +96,10 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        findViewById<AppCompatButton>(R.id.get_next_play_time).setOnClickListener {
+        findViewById<AppCompatButton>(R.id.get_reward_info).setOnClickListener {
             val gamelySDKClient = (application as GamelySampleApplication).gamelySDKClient()
             gamelySDKClient?.getReward(
-                RequestOption.NEXT_PLAY_TIME, null, iResponseListener, iEventListener
+                RequestOption.REWARD_NAME_INFO, "rule name value", iResponseListener, iEventListener
             )
         }
 
