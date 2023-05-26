@@ -17,7 +17,7 @@ class GamelySampleApplication : Application() {
             .setUserId(%TOKEN_VALUE%) //Mandatory
             .setApiKey(%API_KEY%)//Mandatory
             .setLocale(GamelyLocale.ENGLISH)//Optional
-            .setUpEnvironment(Environment.STAGING)
+            .setUpEnvironment(Environment.STAGING)//Optional, default: Environment.PRODUCTION
             .setInitListener(iSdkInitListener)//Optional
             .build()
     }
