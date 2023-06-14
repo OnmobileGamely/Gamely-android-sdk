@@ -132,7 +132,7 @@ val iResponseListener = object : IResponseListener {
             //resultBundle?.bundle?.getString("Text") // Result text
             //resultBundle?.bundle?.getLong("NextPlayTimeStamp") // Next Rule Start timestamp in millisecond
             //resultBundle?.bundle?.getLong("NextPlayRemainingTimeStamp")// Next Rule Remaining timestamp in millisecond
-            //resultBundle?.bundle?.getString("NextPlayRuleName") // Next Rule Name
+            //resultBundle?.bundle?.getString("NextPlayRuleName") // Next Rule Name, null value means there is no future rule available wrt ruleName passed
 
             //resultBundle?.bundle?.getInt("SpinsLeftCount")// Number of Spins left in case of SpinWheel
             //resultBundle?.bundle?.getInt("PointsWon")//Points won
@@ -140,7 +140,7 @@ val iResponseListener = object : IResponseListener {
             //resultBundle?.bundle?.getStringArray("VouchersWon")// voucher codes won
 
             //val bottomSheetDialog = BottomSheetDialog(activity) // use this activity to open bottomsheet
-            //if (activity != null) (activity as GamelySdkHomeActivity).triviaCompleted()// use this to close sdk
+            //if (activity != null) (activity as GamelySdkHomeActivity).completed()// use this to close sdk
 
 
         when (resultStatus) {
@@ -158,21 +158,21 @@ val iResponseListener = object : IResponseListener {
                 //resultBundle?.bundle?.getString("Text")
                 //resultBundle?.bundle?.getLong("NextPlayTimeStamp")
                 //resultBundle?.bundle?.getLong("NextPlayRemainingTimeStamp")
-                //resultBundle?.bundle?.getString("NextPlayRuleName")
-                //if (activity != null) (activity as GamelySdkHomeActivity).triviaCompleted()
+                //resultBundle?.bundle?.getString("NextPlayRuleName") // Next Rule Name, null value means there is no future rule available wrt ruleName passed
+                //if (activity != null) (activity as GamelySdkHomeActivity).completed()
             }
             ResultStatus.LOOSE -> {
                 //resultBundle?.bundle?.getString("Text")
                 //resultBundle?.bundle?.getLong("NextPlayTimeStamp")
                 //resultBundle?.bundle?.getLong("NextPlayRemainingTimeStamp")
-                //resultBundle?.bundle?.getString("NextPlayRuleName")
-                //if (activity != null) (activity as GamelySdkHomeActivity).triviaCompleted()
+                //resultBundle?.bundle?.getString("NextPlayRuleName") // Next Rule Name, null value means there is no future rule available wrt ruleName passed
+                //if (activity != null) (activity as GamelySdkHomeActivity).completed()
             }
             ResultStatus.REWARD_INFO -> {
                 //resultBundle?.bundle?.getInt("SpinsLeftCount")
                 //resultBundle?.bundle?.getLong("NextPlayTimeStamp")
                 //resultBundle?.bundle?.getLong("NextPlayRemainingTimeStamp")
-                //resultBundle?.bundle?.getString("NextPlayRuleName")
+                //resultBundle?.bundle?.getString("NextPlayRuleName") // Next Rule Name, null value means there is no future rule available wrt ruleName passed
             }
             ResultStatus.TOKEN_EXPIRED -> {
                 //Handle if token has expired
@@ -183,8 +183,8 @@ val iResponseListener = object : IResponseListener {
             ResultStatus.PLAY_COMPLETED -> {
                 //resultBundle?.bundle?.getLong("NextPlayTimeStamp")
                 //resultBundle?.bundle?.getLong("NextPlayRemainingTimeStamp")
-                //resultBundle?.bundle?.getString("NextPlayRuleName")
-                //if (activity != null) (activity as GamelySdkHomeActivity).triviaCompleted()
+                //resultBundle?.bundle?.getString("NextPlayRuleName") // Next Rule Name, null value means there is no future rule available wrt ruleName passed
+                //if (activity != null) (activity as GamelySdkHomeActivity).completed()
             }
         }
     }
