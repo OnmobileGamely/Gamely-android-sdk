@@ -8,6 +8,7 @@ Learn how to quickly integrate and start using the Gamize Android SDK
 * AuthToken
 * Api Key
 * Dashboard link and access
+* Latest path/version details of the SDK
 
 ## Supported Android Version
 * Gamize Android Sdk is supported for Android 21 API level and above
@@ -30,7 +31,7 @@ Step5 | [`Initialize SDK`](https://gamelyjsdoc.readme.io/reference/sdk-integrati
 ## SDK Methods
 Methods| Description
 -------------- | -------------
-[`getReward`](https://gamelyjsdoc.readme.io/reference/sdk-methods#1-get-reward) | provides reward information or reward UI on the basis of parameter passed
+[`getReward`](https://gamelyjsdoc.readme.io/reference/sdk-methods#1-get-reward) | provides reward information or reward UI(like SpinWheel, Quiz etc.) on the basis of parameter passed
 [`getLeaderBoard`](https://gamelyjsdoc.readme.io/reference/sdk-methods#2-get-leaderboard) | provides leaderboard ui corresponding to reward
 
 
@@ -38,10 +39,10 @@ Methods| Description
 Resource| Description
 -------------- | -------------
 [`Sample Application`](https://github.com/OnmobileGamely/Gamely-android-sdk/) | Android sample application with Gamize sdk integration
-[`Enums`](https://gamelyjsdoc.readme.io/reference/enums) | Enums used in initialization and listeners
+[`Enums`](https://gamelyjsdoc.readme.io/reference/enums) | Enums used in sdk initialization and listeners
 [`Listeners`](https://gamelyjsdoc.readme.io/reference/listeners) | Listeners used in sdk intialization and methods
 [`ResultBundle`](https://gamelyjsdoc.readme.io/reference/resultbundle) | Results from getReward method can be accessed using ResultBundle using predefined keys
-[`Handling UseCases`](https://gamelyjsdoc.readme.io/reference/handling-usecases) | Handling possible usecases
+[`Handling UseCases`](https://gamelyjsdoc.readme.io/reference/handling-usecases) | Handling possible usecases encountered with gamize sdk
 
 
 
