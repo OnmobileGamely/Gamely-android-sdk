@@ -8,7 +8,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:text="Get RewardInfoByName" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/get_reward_info"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:text="Get RewardByName" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -26,7 +26,58 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/get_reward_name"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:text="Get LeaderBoardByName" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/get_daily_streak"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/get_leaderboard"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Daily Streak" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/get_profile_badges"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/get_daily_streak"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Get ProfileBadges" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/get_profile_badges"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/referral_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.5"
+            android:hint="Enter Referral Code"
+            android:singleLine="true"
+            android:textSize="14sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/register_user_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Register User" />
+        </RelativeLayout>
+    </LinearLayout>
 
 </RelativeLayout>

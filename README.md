@@ -33,6 +33,8 @@ Methods| Description
 -------------- | -------------
 [`getReward`](https://gamelyjsdoc.readme.io/reference/sdk-methods#1-get-reward) | provides reward information or reward UI(like SpinWheel, Quiz etc.) on the basis of parameter passed
 [`getLeaderBoard`](https://gamelyjsdoc.readme.io/reference/sdk-methods#2-get-leaderboard) | provides leaderboard ui corresponding to reward
+[`getProfileBadges`](https://gamelyjsdoc.readme.io/reference/sdk-methods#3-get-profile-badges) | provides array of gamize badges won by user
+[`userRegistration`](https://gamelyjsdoc.readme.io/reference/sdk-methods#4-referral-user-registeration) | This method will register the user on Gamize who registers on clients application using Gamize referral link/code.
 
 
 ## SDK Resources
